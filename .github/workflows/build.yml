@@ -78,23 +78,7 @@ jobs:
       
       - name: Patch Dockerfile - REPLACE
         run: |
-          REPLACEMENT=$(cat <<'EOF'
-          && cd /tmp/openresty-${RESTY_VERSION} \
-          && LUAJIT_DIR=$(find bundle -maxdepth 1 -type d -name 'LuaJIT-*' | head -n1) \
-          && echo "Replacing LuaJIT in $LUAJIT_DIR" \
-          && rm -rf $LUAJIT_DIR/* \
-          && cp -r /tmp/LuaJIT/* $LUAJIT_DIR/
-          EOF
-              )
-
-          awk -v r="$REPLACEMENT" '
-            $0 ~ /&& cd \/tmp\/openresty-\${RESTY_VERSION} \\\/ {
-              print r
-              next
-            } 
-            { print }
-          ' Dockerfile > Dockerfile.new && mv Dockerfile.new Dockerfile
-          
+          git apply replace_luajit.patch
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
