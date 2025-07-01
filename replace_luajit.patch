@@ -6,7 +6,7 @@ index 17942f2..5dd6882 100644
      "
  
  ARG RESTY_J="1"
-+COPY LuaJIT /tmp
++COPY ./LuaJIT /tmp
  
  # https://github.com/openresty/openresty-packaging/blob/master/alpine/openresty/APKBUILD
  ARG RESTY_CONFIG_OPTIONS="\
