@@ -62,7 +62,7 @@ jobs:
         run: |
           echo "Download OpenResty Dockerfile $version ..."
           curl -fsSL -o Dockerfile \
-            https://raw.githubusercontent.com/openresty/docker-openresty/master/alpine/${version}/Dockerfile
+            https://raw.githubusercontent.com/openresty/docker-openresty/refs/tags/${version}/alpine/Dockerfile
 
       - name: Patch Dockerfile - BASE_IMAGE
         run: | 
