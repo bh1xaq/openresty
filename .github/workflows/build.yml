@@ -72,13 +72,8 @@ jobs:
 
       - name: Patch Dockerfile - LoongArch64 LuaJIT
         run: |
-          echo "Use loongson LuaJIT ..."
-          git clone --depth 1 --branch $LUAJIT_VERSION $LUAJIT_REPO LuaJIT
-          sed -i '/^ARG RESTY_J="1"$/a COPY LuaJIT /tmp' Dockerfile
-      
-      - name: Patch Dockerfile - REPLACE
-        run: |
           git apply replace_luajit.patch
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
