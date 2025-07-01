@@ -58,11 +58,15 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download Dockerfile + LuaJIT
+      - name: Download Dockerfile
         run: |
           echo "Download OpenResty Dockerfile $version ..."
           curl -fsSL -o Dockerfile \
             https://raw.githubusercontent.com/openresty/docker-openresty/refs/tags/${version}/alpine/Dockerfile
+      
+      -name: Download LuaJIT
+        run: |
+          git clone --depth 1 --branch $LUAJIT_VERSION $LUAJIT_REPO LuaJIT
 
       - name: Patch Dockerfile - BASE_IMAGE
         run: | 
