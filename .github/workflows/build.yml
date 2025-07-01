@@ -22,8 +22,7 @@ jobs:
       - name: Get latest OpenResty version
         id: get
         run: |
-          latest=$(curl -s https://api.github.com/repos/openresty/docker-openresty/contents/alpine | \
-            jq -r '.[].name' | grep -E '^[0-9]+\.[0-9]+\.[0-9]+.*' | sort -V | tail -n1)
+          latest=$(curl -s https://api.github.com/repos/openresty/docker-openresty/tags | jq -r '.[0].name')
           echo "version=$latest" >> $GITHUB_OUTPUT
 
       - name: Check if image already built
