@@ -64,7 +64,7 @@ jobs:
           curl -fsSL -o Dockerfile \
             https://raw.githubusercontent.com/openresty/docker-openresty/refs/tags/${version}/alpine/Dockerfile
       
-      -name: Download LuaJIT
+      - name: Download LuaJIT
         run: |
           git clone --depth 1 --branch $LUAJIT_VERSION $LUAJIT_REPO LuaJIT
 
