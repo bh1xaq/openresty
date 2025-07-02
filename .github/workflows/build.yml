@@ -67,6 +67,8 @@ jobs:
       - name: Download LuaJIT
         run: |
           git clone --depth 1 --branch $LUAJIT_VERSION $LUAJIT_REPO LuaJIT
+          cd LuaJIT
+          pwd
 
       - name: Patch Dockerfile - BASE_IMAGE
         run: | 
