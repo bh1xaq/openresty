@@ -32,7 +32,7 @@ ARG RESTY_PCRE_BUILD_OPTIONS="--enable-jit --enable-pcre2grep-jit --disable-bsr-
     "
 
 ARG RESTY_J="1"
-COPY LuaJIT /tmp
+COPY LuaJIT /tmp/
 RUN cd /tmp && ls -la
 
 # https://github.com/openresty/openresty-packaging/blob/master/alpine/openresty/APKBUILD
