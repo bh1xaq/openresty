@@ -61,8 +61,8 @@ jobs:
       - name: Download Dockerfile
         run: |
           echo "Download OpenResty Dockerfile $version ..."
-          #curl -fsSL -o Dockerfile \
-          #  https://raw.githubusercontent.com/openresty/docker-openresty/refs/tags/${version}/alpine/Dockerfile
+          curl -fsSL -o Dockerfile \
+            https://raw.githubusercontent.com/openresty/docker-openresty/refs/tags/${version}/alpine/Dockerfile
       
       - name: Download LuaJIT
         run: |
@@ -78,7 +78,7 @@ jobs:
 
       - name: Patch Dockerfile - LoongArch64 LuaJIT
         run: |
-          #git apply replace_luajit.patch
+          git apply replace_luajit.patch
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
