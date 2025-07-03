@@ -39,6 +39,9 @@ jobs:
     needs: check
     if: needs.check.outputs.build == '1'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       version: ${{ needs.check.outputs.version }}
     steps:
